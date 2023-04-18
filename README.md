@@ -42,7 +42,7 @@ Com a aplicação é possível: <br>
 
 ## Especificacoes
 
-* A linguagem que utilizaremos para desenvolver o projeto será JavaScript, a qual estamos utlizando nas aulas práticas.
+* A linguagem que utilizaremos para desenvolver o projeto será JavaScript, a qual estamos utilizando nas aulas práticas.
 
 * Devido a escolha da linguagem ser JavaScript, o projeto será desenvolvido utilizando o framework NodeJs para gerenciamento de dependências.
 
