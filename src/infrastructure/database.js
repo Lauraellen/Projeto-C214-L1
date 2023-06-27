@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const uri = `mongodb+srv://usuarioc214:usuarioc214@listadetarefas.jb3axxf.mongodb.net/`;
+const uri = `mongodb+srv://usuarioC214:usuarioC214@listadetarefas.jb3axxf.mongodb.net/?retryWrites=true&w=majority`;
 
 mongoose.connect(uri, {
     useNewUrlParser: true,
@@ -16,20 +16,16 @@ const TaskSchema = new Schema({
         unique: true,
     },
     nome: {
-        type: String,
-        unique: true,
+        type: String
     },
     status: {
-        type: String,
-        unique: true,
+        type: String
     },
     dataPrazo: {
-        type: String,
-        unique: true,
+        type: String
     },
     descricao: {
-        type: String,
-        unique: true,
+        type: String
     },
     nome: String,
     status: String,
