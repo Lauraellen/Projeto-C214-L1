@@ -7,7 +7,6 @@ import React, { useEffect, useState } from 'react';
 import './style.css';
 import ClientTask from '../../services/task.js';
 import Button from '../../components/Button';
-import Modal from '../../components/Modal';
 import ModalCreate from '../../components/ModalCreate';
 
 export default function ListAll() {
@@ -27,8 +26,10 @@ export default function ListAll() {
         });
     };
 
-    const [inputValue, setInputValue] = useState(false); 
-    const handleOpenModalCreate = () => { setInputValue(true); };
+    const [inputValueCreate, setInputValueCreate] = useState(false); 
+    const [inputValueDelete, setInputValueDelete] = useState(false); 
+    const handleOpenModalCreate = () => { setInputValueCreate(true); };
+    const handleOpenModalDelete = () => { setInputValueDelete(true); };
 
     return (
         <div>
@@ -44,11 +45,11 @@ export default function ListAll() {
                     <Button text="Criar nova tarefa" onClick={handleOpenModalCreate}></Button>
                 </div>
                 <div>
-                    <ModalCreate abrirModal={inputValue} setObjetos={setObjetos}></ModalCreate>
+                    <ModalCreate abrirModal={inputValueCreate} setObjetos={setObjetos}></ModalCreate>
                 </div>
-                {/* <div className="button">
-                    <Button text="Apagar tarefa" onClick={handleOpenModal}></Button>
-                </div> */}
+                <div className="button">
+                    <Button text="Apagar tarefa" onClick={handleOpenModalDelete}></Button>
+                </div>
             </div>
         </div>
     )
