@@ -1,6 +1,8 @@
+import './style.css';
+
 const Button = ({ onClick, text }) => {
     return (
-        <button onClick={onClick}>
+        <button className="custom-button-delete" onClick={onClick}>
             {text}
         </button>
     );

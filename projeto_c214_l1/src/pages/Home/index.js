@@ -7,6 +7,7 @@ import React, { useEffect, useState } from 'react';
 import './style.css';
 import ClientTask from '../../services/task.js';
 import Button from '../../components/Button';
+import ButtonCreate from '../../components/ButtonCreate';
 import ModalCreate from '../../components/ModalCreate';
 
 export default function ListAll() {
@@ -42,12 +43,12 @@ export default function ListAll() {
                     <Table message={objetos}></Table>
                 </div>
                 <div className="button">
-                    <Button text="Criar nova tarefa" onClick={handleOpenModalCreate}></Button>
+                    <ButtonCreate text="Criar nova tarefa" onClick={handleOpenModalCreate}></ButtonCreate>
                 </div>
                 <div>
                     <ModalCreate abrirModal={inputValueCreate} setObjetos={setObjetos}></ModalCreate>
                 </div>
-                <div className="button">
+                <div className="button" style={{ marginTop: '1%'}}>
                     <Button text="Apagar tarefa" onClick={handleOpenModalDelete}></Button>
                 </div>
             </div>

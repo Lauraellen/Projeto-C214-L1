@@ -1,6 +1,14 @@
+import './style.css';
+
 export default function Table(props) {
 
     const data = props.message.data ? props.message.data : [props.message];
+
+    function formatarData(data) {
+        const options = { day: '2-digit', month: '2-digit', year: 'numeric' };
+        return new Date(data).toLocaleDateString('pt-BR', options);
+    }
+
     return (
 
         <table>
@@ -19,7 +27,7 @@ export default function Table(props) {
                         <tr key={index}>
                             <td>{item.nome}</td>
                             <td>{item.status}</td>
-                            <td>{item.dataPrazo}</td>
+                            <td>{formatarData(item.dataPrazo)}</td>
                             <td>{item.descricao}</td>
                         </tr>
                     ))
