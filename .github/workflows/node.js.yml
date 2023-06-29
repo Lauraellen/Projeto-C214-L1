@@ -21,11 +21,6 @@ jobs:
     - name: Install backend dependencies
       run: npm install --prefix backend
 
-  backend-build:
-    needs: backend-install
-    runs-on: ubuntu-latest
-
-    steps:
     - name: Build backend
       run: npm run build --prefix backend
 
