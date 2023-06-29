@@ -70,9 +70,9 @@ export default function ListAll() {
                     )}
                 </div>
                 <div>
-                    {/* {isModalUpdateOpen && (
+                    {isModalUpdateOpen && (
                         <ModalUpdate abrirModal={inputValueUpdate} closeModal={closeModalUpdate} setObjetos={setObjetos}></ModalUpdate>
-                    )} */}
+                    )}
                 </div>
             </div>
         </div>
