@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import './style.css';
 import { FaTrashAlt, FaEdit } from 'react-icons/fa';
 import ClientTask from '../../services/task.js';
-import ModalUpdate from '../ModalUpdate';
 
 export default function Table(props) {
     const [tableData, setTableData] = useState([]);

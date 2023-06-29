@@ -6,7 +6,6 @@ import React, { useEffect, useState } from 'react';
 
 import './style.css';
 import ClientTask from '../../services/task.js';
-import Button from '../../components/Button';
 import ButtonCreate from '../../components/ButtonCreate';
 import ModalCreate from '../../components/ModalCreate';
 import ModalUpdate from '../../components/ModalUpdate';
