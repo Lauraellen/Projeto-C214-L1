@@ -39,7 +39,7 @@ const Task = {
 
             const response = await TaskRepository.update(data);
 
-            if (response === []) {
+            if (response.length === 0) {
                 const result = Constants.ErrorNotFound;
                 return result;
             }
@@ -73,21 +73,6 @@ const Task = {
         } catch (error) {
             return error;
         }
-    },
-
-    async listByDate(data) {
-        try {
-            const validation = validate.validate(data, Constraints.get);
-            if (validation) {
-                const response = Constants.ErrorValidation;
-                response.message = validation;
-                return response;
-            }
-            const response = await TaskRepository.listByDate(data);
-            return response;
-        } catch (error) {
-            return error;
-        }
-    },
+    }
 };
 module.exports = Task;
