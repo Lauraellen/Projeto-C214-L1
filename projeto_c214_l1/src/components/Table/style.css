@@ -1,6 +1,7 @@
 table {
     width: 100%;
     border-collapse: collapse;
+    margin-top: 15px;
 }
 
 thead {
@@ -33,10 +34,11 @@ tbody tr:hover {
 /* style.css */
 .action-buttons-container {
     display: flex;
-    gap: 10px; /* Espaçamento entre os botões */
-  }
-  
-  .action-button {
+    gap: 10px;
+    /* Espaçamento entre os botões */
+}
+
+.action-button {
     border: none;
     background-color: transparent;
     padding: 0;
@@ -44,11 +46,20 @@ tbody tr:hover {
     display: flex;
     align-items: center;
     justify-content: center;
-  }
-  
-  .action-button svg {
-    fill: #007bff; /* Cor do ícone */
-    width: 24px; /* Ajuste o tamanho do ícone conforme necessário */
+}
+
+.action-button svg {
+    fill: #007bff;
+    /* Cor do ícone */
+    width: 24px;
+    /* Ajuste o tamanho do ícone conforme necessário */
     height: 24px;
-  }
-  
+}
+
+.filter-input {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 8px;
+    font-size: 14px;
+    border-radius: 5px;
+}

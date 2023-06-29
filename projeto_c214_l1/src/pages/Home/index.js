@@ -65,7 +65,7 @@ export default function ListAll() {
                 <Title name="Tarefas">
                     <GoTasklist size={30} />
                 </Title>
-                <div className="container">
+                <div>
                     <Table message={objetos} handleOpenModalUpdate={handleOpenModalUpdate}></Table>
                 </div>
                 <div className="button">
