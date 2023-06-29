@@ -1,7 +1,7 @@
 import Sidebar from '../../components/Sidebar';
 import Title from '../../components/Title';
 import Table from '../../components/Table';
-import { HiOutlineUsers } from 'react-icons/hi'
+import { GoTasklist } from 'react-icons/go'
 import React, { useEffect, useState } from 'react';
 
 import './style.css';
@@ -17,9 +17,16 @@ export default function ListAll() {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [inputValueUpdate, setInputValueUpdate] = useState(false);
     const [isModalUpdateOpen, setIsModalUpdateOpen] = useState(false);
+    const [modalUpdateData, setModalUpdateData] = useState(null);
+
 
     const handleOpenModalCreate = () => { setInputValueCreate(true); };
-    const handleOpenModalUpdate = () => { setInputValueUpdate(true); };
+
+    const handleOpenModalUpdate = (data) => { 
+        console.debug('d => ', data)
+        setInputValueUpdate(true); 
+        setModalUpdateData(data);
+    };
 
     useEffect(() => {
         getTask().then((resultado) => {
@@ -56,10 +63,10 @@ export default function ListAll() {
             <Sidebar />
             <div className="content">
                 <Title name="Tarefas">
-                    <HiOutlineUsers size={30} />
+                    <GoTasklist size={30} />
                 </Title>
                 <div className="container">
-                    <Table message={objetos}></Table>
+                    <Table message={objetos} handleOpenModalUpdate={handleOpenModalUpdate}></Table>
                 </div>
                 <div className="button">
                     <ButtonCreate text="Criar nova tarefa" onClick={handleOpenModalCreate}></ButtonCreate>
@@ -71,7 +78,7 @@ export default function ListAll() {
                 </div>
                 <div>
                     {isModalUpdateOpen && (
-                        <ModalUpdate abrirModal={inputValueUpdate} closeModal={closeModalUpdate} setObjetos={setObjetos}></ModalUpdate>
+                        <ModalUpdate abrirModal={inputValueUpdate} closeModal={closeModalUpdate} setObjetos={setObjetos} data={modalUpdateData}></ModalUpdate>
                     )}
                 </div>
             </div>

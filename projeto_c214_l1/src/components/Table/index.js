@@ -29,7 +29,8 @@ export default function Table(props) {
     }
 
     async function handleEditarTarefa(data) {
-        
+        console.debug(data)
+        props.handleOpenModalUpdate(data)
     }
 
     return (

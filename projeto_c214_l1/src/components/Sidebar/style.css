@@ -2,19 +2,19 @@
     margin:0;
     padding:0;
     width: 200px;
-    background-color: #006600;
+    background-color: #1E90FF;
     position: fixed;
     height: 100%;
     overflow: auto;
 }
 
 .sidebar div{
-    background: url('../../assets/list-contacts.png');
+    background: url('../../assets/person.jpg');
     background-color: #181C2E;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    border-radius: 12px;
+    border-radius: 25px;
     height: 100px;
     padding-top: 30px;
     margin: 10px;
@@ -74,4 +74,10 @@
     .sidebar a svg{
         display: none;
     }
+}
+
+p {
+    text-align: center;
+    font: 18px 'Roboto', sans-serif;
+    color: white
 }

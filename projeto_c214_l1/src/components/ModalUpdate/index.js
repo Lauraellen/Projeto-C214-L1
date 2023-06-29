@@ -4,7 +4,7 @@ import Button from '../../components/Button';
 import Modal from '../../components/Modal';
 import './style.css';
 
-const ModalUpdate = ({ abrirModal, closeModal, setObjetos }) => {
+const ModalUpdate = ({ abrirModal, closeModal, setObjetos, data }) => {
   const [modalOpen, setModalOpen] = useState(false);
   const [novoNomeDaTarefa, setNovoNomeDaTarefa] = useState('');
   const [novoStatusDaTarefa, setNovoStatusDaTarefa] = useState('');
@@ -13,12 +13,13 @@ const ModalUpdate = ({ abrirModal, closeModal, setObjetos }) => {
   const [exibirErro, setExibirErro] = useState(false);
 
   const handleOpenModal = () => {
+    console.debug('DATA => ', data);
     setModalOpen(true);
   };
 
   const handleCloseModal = () => {
     setModalOpen(false);
-    closeModal(); // Chama a função closeModal passada como prop
+    closeModal(); // Call the closeModal function passed as prop
   };
 
   const atualizarTarefa = async () => {
@@ -34,20 +35,23 @@ const ModalUpdate = ({ abrirModal, closeModal, setObjetos }) => {
 
     setExibirErro(false);
 
-    await ClientTask.update({
+    const updatedData = {
+      id: data.id,
       nome: novoNomeDaTarefa,
       status: novoStatusDaTarefa,
       dataPrazo: novaDataPrazoDaTarefa,
       descricao: novaDescricaoDaTarefa,
-    });
+    };
+
+    await ClientTask.update(updatedData);
 
     const resultado = await getTask();
     setObjetos(resultado);
 
-    // Limpar os campos da modal após a criação da tarefa
+    // Clear the fields after task update
     setNovoNomeDaTarefa('');
     setNovoStatusDaTarefa('');
-    setNovaDescricaoDaTarefa('');
+    setNovaDataPrazoDaTarefa('');
     setNovaDescricaoDaTarefa('');
 
     handleCloseModal();
@@ -60,7 +64,7 @@ const ModalUpdate = ({ abrirModal, closeModal, setObjetos }) => {
 
   const getTask = () => {
     return new Promise((resolve) => {
-      // Simulando um tempo de espera
+      // Simulating a wait time
       setTimeout(() => {
         const list = ClientTask.listAll();
         resolve(list);
@@ -69,15 +73,22 @@ const ModalUpdate = ({ abrirModal, closeModal, setObjetos }) => {
   };
 
   useEffect(() => {
+    console.debug('data => ', data);
+    if (data) {
+      setModalOpen(true);
+      setNovoNomeDaTarefa(data.nome);
+      setNovaDataPrazoDaTarefa(data.dataPrazo);
+      setNovoStatusDaTarefa(data.status);
+      setNovaDescricaoDaTarefa(data.descricao);
+    }
+  }, [data]);
+
+  useEffect(() => {
     if (abrirModal) {
       handleOpenModal();
     } else {
       handleCloseModal();
     }
-  }, [abrirModal]);
-
-  useEffect(() => {
-    setModalOpen(abrirModal); // Atualiza o estado modalOpen com o valor de abrirModal
   }, [abrirModal]);
 
   return (

@@ -38,6 +38,15 @@ const ClientTask = {
             return e;
         }
     },
+
+    async update(data) {
+        try {
+            const response = await client.put(`${taskPath}/update`, data);
+            return response;
+        } catch (e) {
+            return e;
+        }
+    },
 };
 
 export default ClientTask;
