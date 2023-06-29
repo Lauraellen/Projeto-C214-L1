@@ -17,9 +17,12 @@ export default function Table(props) {
     }, [props.message]);
 
     function formatarData(data) {
-        const options = { day: '2-digit', month: '2-digit', year: 'numeric' };
-        return new Date(data).toLocaleDateString('pt-BR', options);
-    }
+        const partesData = data.split('-');
+        const ano = partesData[0];
+        const mes = partesData[1];
+        const dia = partesData[2];
+        return `${dia}-${mes}-${ano}`;
+      }
 
     async function handleApagarTarefa(idDaTarefa) {
         await ClientTask.delete({
@@ -75,7 +78,7 @@ export default function Table(props) {
                             <tr key={index}>
                                 <td>{item.nome}</td>
                                 <td>{item.status}</td>
-                                <td>{formatarData(item.dataPrazo)}</td>
+                                <td>{formatarData(item.dataPrazo)}</td>                                
                                 <td>{item.descricao}</td>
                                 <td>
                                     <div className="action-buttons-container">
