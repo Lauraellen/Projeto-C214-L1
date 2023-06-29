@@ -4,12 +4,12 @@ import Button from '../../components/Button';
 import Modal from '../../components/Modal';
 import './style.css';
 
-const ModalCreate = ({ abrirModal, closeModal, setObjetos }) => {
+const ModalUpdate = ({ abrirModal, closeModal, setObjetos }) => {
   const [modalOpen, setModalOpen] = useState(false);
-  const [nomeDaNovaTarefa, setNomeDaNovaTarefa] = useState('');
-  const [statusDaNovaTarefa, setStatusDaNovaTarefa] = useState('');
-  const [dataPrazoDaNovaTarefa, setDataPrazoDaNovaTarefa] = useState('');
-  const [descricaoDaNovaTarefa, setDescricaoDaNovaTarefa] = useState('');
+  const [novoNomeDaTarefa, setNovoNomeDaTarefa] = useState('');
+  const [novoStatusDaTarefa, setNovoStatusDaTarefa] = useState('');
+  const [novaDataPrazoDaTarefa, setNovaDataPrazoDaTarefa] = useState('');
+  const [novaDescricaoDaTarefa, setNovaDescricaoDaTarefa] = useState('');
   const [exibirErro, setExibirErro] = useState(false);
 
   const handleOpenModal = () => {
@@ -21,12 +21,12 @@ const ModalCreate = ({ abrirModal, closeModal, setObjetos }) => {
     closeModal(); // Chama a função closeModal passada como prop
   };
 
-  const criarNovaTarefa = async () => {
+  const atualizarTarefa = async () => {
     if (
-      nomeDaNovaTarefa === '' ||
-      statusDaNovaTarefa === '' ||
-      dataPrazoDaNovaTarefa === '' ||
-      !isValidDate(dataPrazoDaNovaTarefa)
+      novoNomeDaTarefa === '' ||
+      novoStatusDaTarefa === '' ||
+      novaDataPrazoDaTarefa === '' ||
+      !isValidDate(novaDataPrazoDaTarefa)
     ) {
       setExibirErro(true);
       return;
@@ -34,21 +34,21 @@ const ModalCreate = ({ abrirModal, closeModal, setObjetos }) => {
 
     setExibirErro(false);
 
-    await ClientTask.create({
-      nome: nomeDaNovaTarefa,
-      status: statusDaNovaTarefa,
-      dataPrazo: dataPrazoDaNovaTarefa,
-      descricao: descricaoDaNovaTarefa,
+    await ClientTask.update({
+      nome: novoNomeDaTarefa,
+      status: novoStatusDaTarefa,
+      dataPrazo: novaDataPrazoDaTarefa,
+      descricao: novaDescricaoDaTarefa,
     });
 
     const resultado = await getTask();
     setObjetos(resultado);
 
     // Limpar os campos da modal após a criação da tarefa
-    setNomeDaNovaTarefa('');
-    setStatusDaNovaTarefa('');
-    setDataPrazoDaNovaTarefa('');
-    setDescricaoDaNovaTarefa('');
+    setNovoNomeDaTarefa('');
+    setNovoStatusDaTarefa('');
+    setNovaDescricaoDaTarefa('');
+    setNovaDescricaoDaTarefa('');
 
     handleCloseModal();
   };
@@ -85,21 +85,21 @@ const ModalCreate = ({ abrirModal, closeModal, setObjetos }) => {
       <h2>Criar nova tarefa</h2>
       {exibirErro && <p>Preencha todos os campos obrigatórios corretamente.</p>}
       <div className="form-field">
-        <label htmlFor="nomeDaNovaTarefa">Nome da tarefa:</label>
+        <label htmlFor="novoNomeDaTarefa">Nome da tarefa:</label>
         <input
           type="text"
-          id="nomeDaNovaTarefa"
-          value={nomeDaNovaTarefa}
-          onChange={(e) => setNomeDaNovaTarefa(e.target.value)}
+          id="novoNomeDaTarefa"
+          value={novoNomeDaTarefa}
+          onChange={(e) => setNovoNomeDaTarefa(e.target.value)}
           className="input-field"
         />
       </div>
       <div className="form-field">
-        <label htmlFor="statusDaNovaTarefa">Status da tarefa:</label>
+        <label htmlFor="novoStatusDaTarefa">Status da tarefa:</label>
         <select
-          id="statusDaNovaTarefa"
-          value={statusDaNovaTarefa}
-          onChange={(e) => setStatusDaNovaTarefa(e.target.value)}
+          id="novoStatusDaTarefa"
+          value={novoStatusDaTarefa}
+          onChange={(e) => setNovoStatusDaTarefa(e.target.value)}
           className="select-field"
         >
           <option value="">Selecione...</option>
@@ -109,29 +109,29 @@ const ModalCreate = ({ abrirModal, closeModal, setObjetos }) => {
         </select>
       </div>
       <div className="form-field">
-        <label htmlFor="dataPrazoDaNovaTarefa">Data prazo para conclusão da tarefa:</label>
+        <label htmlFor="novaDataPrazoDaTarefa">Data prazo para conclusão da tarefa:</label>
         <input
           type="date"
-          id="dataPrazoDaNovaTarefa"
-          value={dataPrazoDaNovaTarefa}
-          onChange={(e) => setDataPrazoDaNovaTarefa(e.target.value)}
+          id="novaDataPrazoDaTarefa"
+          value={novaDataPrazoDaTarefa}
+          onChange={(e) => setNovaDataPrazoDaTarefa(e.target.value)}
           className="input-field"
         />
       </div>
       <div className="form-field">
-        <label htmlFor="descricaoDaNovaTarefa">Descrição da tarefa:</label>
+        <label htmlFor="novaDescricaoDaTarefa">Descrição da tarefa:</label>
         <textarea
-          id="descricaoDaNovaTarefa"
-          value={descricaoDaNovaTarefa}
-          onChange={(e) => setDescricaoDaNovaTarefa(e.target.value)}
+          id="novaDescricaoDaTarefa"
+          value={novaDescricaoDaTarefa}
+          onChange={(e) => setNovaDescricaoDaTarefa(e.target.value)}
           className="textarea-field"
         />
       </div>
       <div className="button">
-        <Button text="Salvar" onClick={criarNovaTarefa} />
+        <Button text="Salvar" onClick={atualizarTarefa} />
       </div>
     </Modal>
   );
 };
 
-export default ModalCreate;
+export default ModalUpdate;

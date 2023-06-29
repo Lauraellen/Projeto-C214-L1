@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './style.css';
 import { FaTrashAlt, FaEdit } from 'react-icons/fa';
 import ClientTask from '../../services/task.js';
+import ModalUpdate from '../ModalUpdate';
 
 export default function Table(props) {
     const [tableData, setTableData] = useState([]);
@@ -27,50 +28,47 @@ export default function Table(props) {
         setTableData(updatedTableData);
     }
 
-    function handleEditarTarefa(idDaTarefa) {
-        console.log(idDaTarefa);
-        // Lógica para editar a tarefa
+    async function handleEditarTarefa(data) {
+        
     }
 
     return (
-
-            <table>
-                <thead>
-                    <tr>
-                        <th>Nome da tarefa</th>
-                        <th>Status da tarefa</th>
-                        <th>Data prazo para conclusão da tarefa</th>
-                        <th>Descrição da tarefa</th>
-                        <th>ID da tarefa</th> {/* Coluna para o ID, oculta visualmente */}
-                        <th></th> {/* Coluna para os botões */}
-                    </tr>
-                </thead>
-                <tbody>
-                    {tableData && tableData.length > 0 ? (
-                        tableData.map((item, index) => (
-                            <tr key={index}>
-                                <td>{item.nome}</td>
-                                <td>{item.status}</td>
-                                <td>{formatarData(item.dataPrazo)}</td>
-                                <td>{item.descricao}</td>
-                                <td>
-                                    <div className="action-buttons-container">
-                                        <button onClick={() => handleApagarTarefa(item.id)} className="action-button">
-                                            <FaTrashAlt />
-                                        </button>
-                                        <button onClick={() => handleEditarTarefa(item.id)} className="action-button">
-                                            <FaEdit />
-                                        </button>
-                                    </div>
-                                </td>
-                            </tr>
-                        ))
-                    ) : (
-                        <tr>
-                            <td colSpan="6">Sem dados</td>
+        <table>
+            <thead>
+                <tr>
+                    <th>Nome da tarefa</th>
+                    <th>Status da tarefa</th>
+                    <th>Data prazo para conclusão da tarefa</th>
+                    <th>Descrição da tarefa</th>
+                    <th></th> {/* Coluna para os botões */}
+                </tr>
+            </thead>
+            <tbody>
+                {tableData && tableData.length > 0 ? (
+                    tableData.map((item, index) => (
+                        <tr key={index}>
+                            <td>{item.nome}</td>
+                            <td>{item.status}</td>
+                            <td>{formatarData(item.dataPrazo)}</td>
+                            <td>{item.descricao}</td>
+                            <td>
+                                <div className="action-buttons-container">
+                                    <button onClick={() => handleApagarTarefa(item.id)} className="action-button">
+                                        <FaTrashAlt />
+                                    </button>
+                                    <button onClick={() => handleEditarTarefa(item)} className="action-button">
+                                        <FaEdit />
+                                    </button>
+                                </div>
+                            </td>
                         </tr>
-                    )}
-                </tbody>
-            </table>
+                    ))
+                ) : (
+                    <tr>
+                        <td colSpan="6">Sem dados</td>
+                    </tr>
+                )}
+            </tbody>
+        </table>
     );
 }

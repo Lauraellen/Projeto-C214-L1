@@ -9,13 +9,17 @@ import ClientTask from '../../services/task.js';
 import Button from '../../components/Button';
 import ButtonCreate from '../../components/ButtonCreate';
 import ModalCreate from '../../components/ModalCreate';
+import ModalUpdate from '../../components/ModalUpdate';
 
 export default function ListAll() {
     const [objetos, setObjetos] = useState([]);
     const [inputValueCreate, setInputValueCreate] = useState(false);
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const [inputValueUpdate, setInputValueUpdate] = useState(false);
+    const [isModalUpdateOpen, setIsModalUpdateOpen] = useState(false);
 
     const handleOpenModalCreate = () => { setInputValueCreate(true); };
+    const handleOpenModalUpdate = () => { setInputValueUpdate(true); };
 
     useEffect(() => {
         getTask().then((resultado) => {
@@ -27,6 +31,10 @@ export default function ListAll() {
         setIsModalOpen(inputValueCreate);
     }, [inputValueCreate]);
 
+    useEffect(() => {
+        setIsModalUpdateOpen(inputValueUpdate);
+    }, [inputValueUpdate]);
+
     const getTask = () => {
         return new Promise((resolve) => {
             // Simulando um tempo de espera
@@ -37,6 +45,10 @@ export default function ListAll() {
 
     const closeModalCreate = () => {
         setInputValueCreate(false);
+    };
+
+    const closeModalUpdate = () => {
+        setInputValueUpdate(false);
     };
 
     return (
@@ -56,6 +68,11 @@ export default function ListAll() {
                     {isModalOpen && (
                         <ModalCreate abrirModal={inputValueCreate} closeModal={closeModalCreate} setObjetos={setObjetos}></ModalCreate>
                     )}
+                </div>
+                <div>
+                    {/* {isModalUpdateOpen && (
+                        <ModalUpdate abrirModal={inputValueUpdate} closeModal={closeModalUpdate} setObjetos={setObjetos}></ModalUpdate>
+                    )} */}
                 </div>
             </div>
         </div>
