@@ -29,6 +29,15 @@ const ClientTask = {
             return e;
         }
     },
+
+    async delete(data) {
+        try {
+            const response = await client.delete(`${taskPath}/delete/${data.id}`);
+            return response;
+        } catch (e) {
+            return e;
+        }
+    },
 };
 
 export default ClientTask;

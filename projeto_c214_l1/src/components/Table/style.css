@@ -29,3 +29,26 @@ tbody tr:nth-child(even) {
 tbody tr:hover {
     background-color: #eaeaea;
 }
+
+/* style.css */
+.action-buttons-container {
+    display: flex;
+    gap: 10px; /* Espaçamento entre os botões */
+  }
+  
+  .action-button {
+    border: none;
+    background-color: transparent;
+    padding: 0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .action-button svg {
+    fill: #007bff; /* Cor do ícone */
+    width: 24px; /* Ajuste o tamanho do ícone conforme necessário */
+    height: 24px;
+  }
+  

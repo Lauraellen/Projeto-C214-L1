@@ -12,12 +12,20 @@ import ModalCreate from '../../components/ModalCreate';
 
 export default function ListAll() {
     const [objetos, setObjetos] = useState([]);
+    const [inputValueCreate, setInputValueCreate] = useState(false);
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
+    const handleOpenModalCreate = () => { setInputValueCreate(true); };
 
     useEffect(() => {
         getTask().then((resultado) => {
             setObjetos(resultado);
         });
     }, []);
+
+    useEffect(() => {
+        setIsModalOpen(inputValueCreate);
+    }, [inputValueCreate]);
 
     const getTask = () => {
         return new Promise((resolve) => {
@@ -27,10 +35,9 @@ export default function ListAll() {
         });
     };
 
-    const [inputValueCreate, setInputValueCreate] = useState(false); 
-    const [inputValueDelete, setInputValueDelete] = useState(false); 
-    const handleOpenModalCreate = () => { setInputValueCreate(true); };
-    const handleOpenModalDelete = () => { setInputValueDelete(true); };
+    const closeModalCreate = () => {
+        setInputValueCreate(false);
+    };
 
     return (
         <div>
@@ -46,10 +53,9 @@ export default function ListAll() {
                     <ButtonCreate text="Criar nova tarefa" onClick={handleOpenModalCreate}></ButtonCreate>
                 </div>
                 <div>
-                    <ModalCreate abrirModal={inputValueCreate} setObjetos={setObjetos}></ModalCreate>
-                </div>
-                <div className="button" style={{ marginTop: '1%'}}>
-                    <Button text="Apagar tarefa" onClick={handleOpenModalDelete}></Button>
+                    {isModalOpen && (
+                        <ModalCreate abrirModal={inputValueCreate} closeModal={closeModalCreate} setObjetos={setObjetos}></ModalCreate>
+                    )}
                 </div>
             </div>
         </div>
