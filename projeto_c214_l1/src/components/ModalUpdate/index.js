@@ -93,7 +93,7 @@ const ModalUpdate = ({ abrirModal, closeModal, setObjetos, data }) => {
 
   return (
     <Modal isOpen={modalOpen} onClose={handleCloseModal}>
-      <h2>Criar nova tarefa</h2>
+      <h2>Atualizar tarefa</h2>
       {exibirErro && <p>Preencha todos os campos obrigatórios corretamente.</p>}
       <div className="form-field">
         <label htmlFor="novoNomeDaTarefa">Nome da tarefa:</label>
