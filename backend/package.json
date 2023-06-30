@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "npm run"
+    "build": "npm run",
+    "test": "jest --detectOpenHandles --testEnvironment=node --runInBand --coverage --forceExit"
   },
   "author": "",
   "license": "ISC",
