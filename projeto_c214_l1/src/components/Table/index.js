@@ -16,6 +16,8 @@ export default function Table(props) {
     }, [props.message]);
 
     function formatarData(data) {
+        if (!data) return null;
+        
         const partesData = data.split('-');
         const ano = partesData[0];
         const mes = partesData[1];

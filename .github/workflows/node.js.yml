@@ -20,18 +20,7 @@ jobs:
 
     - name: Install backend dependencies
       run: npm install --prefix backend
-
-  backend-build:
-    needs: backend-install
-    runs-on: ubuntu-latest
-
-    steps:
-    - name: Checkout repository
-      uses: actions/checkout@v2
-
-    - name: Build backend
-      run: npm run build --prefix backend
-
+      
   backend-test:
     needs: backend-build
     runs-on: ubuntu-latest
@@ -50,3 +39,16 @@ jobs:
 
     - name: Run backend tests
       run: npm test --prefix backend
+
+  backend-build:
+    needs: backend-install
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Build backend
+      run: npm run build --prefix backend
+
+
