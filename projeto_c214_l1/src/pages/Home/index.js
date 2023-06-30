@@ -65,9 +65,7 @@ export default function ListAll() {
                     <GoTasklist size={30} />
                 </Title>
                 <div>
-                    {objetos && objetos.length > 0 && (
-                        <Table message={objetos} handleOpenModalUpdate={handleOpenModalUpdate}></Table>
-                    )}
+                    <Table message={objetos} handleOpenModalUpdate={handleOpenModalUpdate}></Table>
                 </div>
                 <div className="button">
                     <ButtonCreate text="Criar nova tarefa" onClick={handleOpenModalCreate}></ButtonCreate>
