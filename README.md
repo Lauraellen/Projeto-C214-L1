@@ -46,6 +46,8 @@ Com a aplicação é possível: <br>
 
 * Devido a escolha da linguagem ser JavaScript, o projeto será desenvolvido utilizando o framework NodeJs para gerenciamento de dependências.
 
+* No frontend, utilizaremos react para construir toda a interface.
+
 * Para os testes unitários, utilizaremos o mesmo framework visto nas aulas práticas, o Jest.
 
 * Para armazenamento de dados, iremos utilizar o banco de dados MongoDB, por ser um banco de alta flexibilidade, escalabilidade e de fácil integração.
@@ -68,14 +70,14 @@ Com a aplicação é possível: <br>
 
 * Abra-o na IDE de sua preferência.
 
-* Certifique-se de estar no diretório backend e rode o comando:
+* Certifique-se de estar no diretório backend e rode o comando para executar os testes:
+```
+   npx jest --coverage;
+```
+* Ainda no diretório backend rode o seguinte comando para executar o projeto:
 ```
    npm i;
    npm start --port=4000; 
-```
-* Ainda no diretório backend rode o seguinte comando para executar os testes:
-```
-   npx jest --coverage;
 ```
 * Certifique-se de estar no diretório projeto_c214_l1 e rode o comando:
 ```
