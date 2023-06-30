@@ -1,3 +1,5 @@
+[![CI de teste](https://github.com/Lauraellen/Projeto-C214-L1/actions/workflows/node.js.yml/badge.svg?branch=main)](https://github.com/Lauraellen/Projeto-C214-L1/actions/workflows/node.js.yml)
+
 <h1 align="center">
   <br>
     Projeto Prático de Engenharia de Software
