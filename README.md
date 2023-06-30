@@ -10,9 +10,6 @@
 
 <h4 align="center">
 <img src="https://img.icons8.com/external-flaticons-lineal-color-flat-icons/64/null/external-to-do-list-lifestyles-flaticons-lineal-color-flat-icons.png"/>
-
-
-
 </h4>
 
 
@@ -20,7 +17,8 @@
 <p align="center">
   <a href="#sobre-o-projeto">Sobre o projeto</a> •
   <a     href="#funcionalidades">Funcionalidades</a> •
-  <a     href="#especificacoes">Especificacoes</a> •
+  <a     href="#especifica%C3%A7%C3%B5es">Especificações</a> •
+   <a     href="#execu%C3%A7%C3%A3o">Execução</a> •
    <a     href="#colaboradores">Colaboradores</a> 
 </p>
 
@@ -40,7 +38,7 @@ Com a aplicação é possível: <br>
 * Estipular data para conclusão da tarefa;
 
 
-## Especificacoes
+## Especificações
 
 * A linguagem que utilizaremos para desenvolver o projeto será JavaScript, a qual estamos utilizando nas aulas práticas.
 
@@ -60,8 +58,29 @@ Com a aplicação é possível: <br>
 
 
 
+## Execução
 
+* Clone o repositório.
 
+* Instale o Node.js em sua máquina.
+
+* Abra-o na IDE de sua preferência.
+
+* Certifique-se de estar no diretório backend e rode o comando:
+```
+   npm i;
+   npm start --port=4000; 
+```
+* Ainda no diretório backend rode o seguinte comando para executar os testes:
+```
+   npx jest --coverage;
+```
+* Certifique-se de estar no diretório projeto_c214_l1 e rode o comando:
+```
+   npm i; 
+   npm start --port=3000;
+```
+* Acesse a url localhost:3000 no navegador de sua preferência e veja o projeto funcionando.
 
 
 </h4>
