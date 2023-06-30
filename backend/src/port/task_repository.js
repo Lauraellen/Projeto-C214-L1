@@ -35,14 +35,6 @@ const TaskRepository = {
             return error;
         }
     },
-    async listByDate(data) {
-        try {
-            const result = await TaskModel.findOne({ dataPrazo: data.dataPrazo }).exec();
-            return result;
-        } catch (error) {
-            return error;
-        }
-    },
     async delete(data) {
         try {
             const result = await TaskModel.deleteOne({ id: data.id }).exec();

@@ -19,11 +19,6 @@ module.exports = (app) => {
         res.status(Utils.responseStatus(response.name));
         res.json(response);
     });
-    app.patch(`${route}/listTask`, async (req, res) => {
-        const response = await Task.listByDate(req.body);
-        res.status(Utils.responseStatus(response.name));
-        res.json(response);
-    });
     app.delete(`${route}/delete/:id`, async (req, res) => {
         const data = req.body;
         const { id } = req.params;

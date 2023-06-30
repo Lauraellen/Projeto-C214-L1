@@ -11,15 +11,6 @@ const ClientTask = {
             return e;
         }
     },
-    
-    async listByFilter(data) {
-        try {
-            const response = await client.patch(`${taskPath}/listTask`, data);
-            return response;
-        } catch (e) {
-            return e;
-        }
-    },
 
     async create(data) {
         try {

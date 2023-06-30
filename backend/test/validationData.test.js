@@ -138,4 +138,70 @@ it('UPDATE - Dado não encontrado', async () => {
     expect(result).toEqual(Constants.ErrorNotFound);
 });
 
+it('DELETE - Dado válido', async () => {
+    const data = {
+        id: 1
+    };
+
+    TaskRepository.delete.mockResolvedValue({ success: true });
+
+    const result = await Task.delete(data);
+    expect(result).toEqual({ success: true });
+});
+
+it('DELETE - Dado inválido', async () => {
+    const data = {
+        id: null
+    };
+
+    validate.validate.mockReturnValue(Constants.ErrorValidation);
+
+    const result = await Task.delete(data);
+    expect(result).toEqual(
+        Constants.ErrorValidation,
+    );
+});
+
+
+it('DELETE - Erro ao excluir', async () => {
+    validate.validate = jest.fn().mockReturnValue(null);
+    TaskRepository.delete = jest.fn().mockRejectedValue(new Error('Delete error'));
+
+    const data = {
+        id: 1,
+    };
+
+    const result = await Task.delete(data);
+
+    expect(validate.validate).toHaveBeenCalledWith(data, Constraints.deleteBy);
+    expect(TaskRepository.delete).toHaveBeenCalledWith(data);
+    expect(result).toEqual(new Error('Delete error'));
+});
+
+it('LIST - Lista de tarefas retornada com sucesso', async () => {
+    const mockResponse = [
+        { id: 1, nome: 'Tarefa 1', status: 'Concluída' },
+        { id: 2, nome: 'Tarefa 2', status: 'Pendente' },
+        { id: 3, nome: 'Tarefa 3', status: 'Em Andamento' }
+    ];
+
+    TaskRepository.list.mockResolvedValue(mockResponse);
+
+    const result = await Task.list();
+
+    expect(result).toEqual(mockResponse);
+});
+
+it('LIST - Erro ao obter a lista de tarefas', async () => {
+    const errorMessage = 'Error retrieving task list';
+
+    TaskRepository.list.mockRejectedValue(new Error(errorMessage));
+
+    const result = await Task.list();
+
+    expect(result).toEqual(new Error(errorMessage));
+});
+
+
+
 
