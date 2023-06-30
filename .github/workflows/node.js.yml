@@ -21,6 +21,18 @@ jobs:
     - name: Install backend dependencies
       run: npm install --prefix backend
 
+
+  backend-testes:
+    needs: backend-install
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+      - uses: actions/checkout@v2
+      
+      - name: Testes backend
+      - run: npx.jest --coverage
+      
   backend-build:
     needs: backend-install
     runs-on: ubuntu-latest
@@ -63,3 +75,4 @@ jobs:
 
     - name: Build projeto_c214_l1
       run: npm run build --prefix projeto_c214_l1
+      
