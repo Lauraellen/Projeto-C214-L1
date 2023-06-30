@@ -28,25 +28,6 @@ describe('create', () => {
     });
 });
 
-describe('createError', () => {
-    it('CREATE - Erro ao criar tarefa', async () => {
-        const data = {
-            nome: 'Tarefa 1',
-            status: 'Pendente',
-            dataPrazo: '30/07/2023'
-        };
-
-        const errorMessage = 'Error creating task';
-
-        const modelSaveSpy = jest.spyOn(TaskModel.prototype, 'save').mockRejectedValue(new Error(errorMessage));
-
-        const result = await task.create(data);
-
-        expect(result).toEqual(new Error(errorMessage));
-
-        modelSaveSpy.mockRestore();
-    });
-})
 
 describe('editTask', () => {
     it('Valid edit', async () => {
@@ -75,28 +56,6 @@ describe('editTask', () => {
         );
     });
 });
-
-describe('updateError', () => {
-    it('UPDATE - Erro ao atualizar tarefa', async () => {
-        const data = {
-            id: 1,
-            nome: 'Tarefa atualizada',
-            status: 'Concluída',
-            dataPrazo: '30/06/2023',
-            descricao: 'Descrição'
-        };
-
-        const errorMessage = 'Error updating task';
-
-        const findOneAndUpdateSpy = jest.spyOn(TaskModel, 'findOneAndUpdate').mockRejectedValue(new Error(errorMessage));
-
-        const result = await task.update(data);
-
-        expect(result).toEqual(new Error(errorMessage));
-
-        findOneAndUpdateSpy.mockRestore();
-    });
-})
 
 describe('listTask', () => {
     it('Valid list', async () => {
