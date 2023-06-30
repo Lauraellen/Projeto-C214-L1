@@ -21,9 +21,9 @@ export default function ListAll() {
 
     const handleOpenModalCreate = () => { setInputValueCreate(true); };
 
-    const handleOpenModalUpdate = (data) => { 
+    const handleOpenModalUpdate = (data) => {
         console.debug('d => ', data)
-        setInputValueUpdate(true); 
+        setInputValueUpdate(true);
         setModalUpdateData(data);
     };
 
@@ -65,7 +65,9 @@ export default function ListAll() {
                     <GoTasklist size={30} />
                 </Title>
                 <div>
-                    <Table message={objetos} handleOpenModalUpdate={handleOpenModalUpdate}></Table>
+                    {objetos && objetos.length > 0 && (
+                        <Table message={objetos} handleOpenModalUpdate={handleOpenModalUpdate}></Table>
+                    )}
                 </div>
                 <div className="button">
                     <ButtonCreate text="Criar nova tarefa" onClick={handleOpenModalCreate}></ButtonCreate>
